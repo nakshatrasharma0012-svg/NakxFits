@@ -527,7 +527,7 @@ function CustomWorkouts({
         .select("*")
         .eq("user_id", userId!)
         .order("created_at", { ascending: false });
-      return (data ?? []) as CustomWorkout[];
+      return (data ?? []) as unknown as CustomWorkout[];
     },
   });
 
