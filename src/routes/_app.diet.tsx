@@ -271,8 +271,9 @@ function PhotoLogger({ onAdd }: { onAdd: (e: any) => void }) {
   const analyze = useServerFn(analyzeMealPhoto);
   const [loading, setLoading] = useState(false);
   const [result, setResult] = useState<{
+    meal_name: string;
     items: { name: string; kcal: number; protein_g: number; carbs_g: number; fat_g: number }[];
-    name: string;
+    total: { kcal: number; protein_g: number; carbs_g: number; fat_g: number };
   } | null>(null);
 
   const onFile = async (file: File) => {
@@ -294,15 +295,7 @@ function PhotoLogger({ onAdd }: { onAdd: (e: any) => void }) {
     }
   };
 
-  const total = result?.items.reduce(
-    (a, i) => ({
-      kcal: a.kcal + i.kcal,
-      protein: a.protein + i.protein_g,
-      carbs: a.carbs + i.carbs_g,
-      fat: a.fat + i.fat_g,
-    }),
-    { kcal: 0, protein: 0, carbs: 0, fat: 0 },
-  );
+  const total = result?.total;
 
   return (
     <div>
