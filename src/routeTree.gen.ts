@@ -15,6 +15,9 @@ import { Route as AppRouteImport } from './routes/_app'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as AppWorkoutsRouteImport } from './routes/_app.workouts'
 import { Route as AppTodayRouteImport } from './routes/_app.today'
+import { Route as AppProgressRouteImport } from './routes/_app.progress'
+import { Route as AppDietRouteImport } from './routes/_app.diet'
+import { Route as AppCoachRouteImport } from './routes/_app.coach'
 
 const OnboardingRoute = OnboardingRouteImport.update({
   id: '/onboarding',
@@ -45,11 +48,29 @@ const AppTodayRoute = AppTodayRouteImport.update({
   path: '/today',
   getParentRoute: () => AppRoute,
 } as any)
+const AppProgressRoute = AppProgressRouteImport.update({
+  id: '/progress',
+  path: '/progress',
+  getParentRoute: () => AppRoute,
+} as any)
+const AppDietRoute = AppDietRouteImport.update({
+  id: '/diet',
+  path: '/diet',
+  getParentRoute: () => AppRoute,
+} as any)
+const AppCoachRoute = AppCoachRouteImport.update({
+  id: '/coach',
+  path: '/coach',
+  getParentRoute: () => AppRoute,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/login': typeof LoginRoute
   '/onboarding': typeof OnboardingRoute
+  '/coach': typeof AppCoachRoute
+  '/diet': typeof AppDietRoute
+  '/progress': typeof AppProgressRoute
   '/today': typeof AppTodayRoute
   '/workouts': typeof AppWorkoutsRoute
 }
@@ -57,6 +78,9 @@ export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/login': typeof LoginRoute
   '/onboarding': typeof OnboardingRoute
+  '/coach': typeof AppCoachRoute
+  '/diet': typeof AppDietRoute
+  '/progress': typeof AppProgressRoute
   '/today': typeof AppTodayRoute
   '/workouts': typeof AppWorkoutsRoute
 }
@@ -66,20 +90,42 @@ export interface FileRoutesById {
   '/_app': typeof AppRouteWithChildren
   '/login': typeof LoginRoute
   '/onboarding': typeof OnboardingRoute
+  '/_app/coach': typeof AppCoachRoute
+  '/_app/diet': typeof AppDietRoute
+  '/_app/progress': typeof AppProgressRoute
   '/_app/today': typeof AppTodayRoute
   '/_app/workouts': typeof AppWorkoutsRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/login' | '/onboarding' | '/today' | '/workouts'
+  fullPaths:
+    | '/'
+    | '/login'
+    | '/onboarding'
+    | '/coach'
+    | '/diet'
+    | '/progress'
+    | '/today'
+    | '/workouts'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/login' | '/onboarding' | '/today' | '/workouts'
+  to:
+    | '/'
+    | '/login'
+    | '/onboarding'
+    | '/coach'
+    | '/diet'
+    | '/progress'
+    | '/today'
+    | '/workouts'
   id:
     | '__root__'
     | '/'
     | '/_app'
     | '/login'
     | '/onboarding'
+    | '/_app/coach'
+    | '/_app/diet'
+    | '/_app/progress'
     | '/_app/today'
     | '/_app/workouts'
   fileRoutesById: FileRoutesById
@@ -135,15 +181,42 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AppTodayRouteImport
       parentRoute: typeof AppRoute
     }
+    '/_app/progress': {
+      id: '/_app/progress'
+      path: '/progress'
+      fullPath: '/progress'
+      preLoaderRoute: typeof AppProgressRouteImport
+      parentRoute: typeof AppRoute
+    }
+    '/_app/diet': {
+      id: '/_app/diet'
+      path: '/diet'
+      fullPath: '/diet'
+      preLoaderRoute: typeof AppDietRouteImport
+      parentRoute: typeof AppRoute
+    }
+    '/_app/coach': {
+      id: '/_app/coach'
+      path: '/coach'
+      fullPath: '/coach'
+      preLoaderRoute: typeof AppCoachRouteImport
+      parentRoute: typeof AppRoute
+    }
   }
 }
 
 interface AppRouteChildren {
+  AppCoachRoute: typeof AppCoachRoute
+  AppDietRoute: typeof AppDietRoute
+  AppProgressRoute: typeof AppProgressRoute
   AppTodayRoute: typeof AppTodayRoute
   AppWorkoutsRoute: typeof AppWorkoutsRoute
 }
 
 const AppRouteChildren: AppRouteChildren = {
+  AppCoachRoute: AppCoachRoute,
+  AppDietRoute: AppDietRoute,
+  AppProgressRoute: AppProgressRoute,
   AppTodayRoute: AppTodayRoute,
   AppWorkoutsRoute: AppWorkoutsRoute,
 }
