@@ -65,7 +65,7 @@ function Diet() {
       meal_type: meal,
       food_id: e.food_id ?? null,
       food_name: e.name,
-      grams: e.grams ?? null,
+      
       kcal: e.kcal,
       protein_g: e.protein,
       carbs_g: e.carbs,
