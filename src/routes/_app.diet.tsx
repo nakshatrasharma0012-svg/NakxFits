@@ -168,7 +168,7 @@ function Diet() {
 }
 
 function SearchFood({ onAdd }: { onAdd: (e: any) => void }) {
-  const [q, setQ) ] = useState("");
+  const [q, setQ] = useState("");
   const [veg, setVeg] = useState<"all" | "veg" | "nonveg">("all");
   const [results, setResults] = useState<Food[]>([]);
   const [grams, setGrams] = useState<Record<string, string>>({});
