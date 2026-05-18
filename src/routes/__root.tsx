@@ -76,11 +76,11 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
         content:
           "width=device-width, initial-scale=1, maximum-scale=1, viewport-fit=cover",
       },
-      { title: "FitFuel — Workouts & Nutrition" },
+      { title: "NAKX FITS — Workouts & Nutrition" },
       {
         name: "description",
         content:
-          "Track gym & home workouts, log meals with AI photo scan, and get a personal AI coach — all in one app.",
+          "NAKX FITS — train gym or home, log meals with AI photo scan, and get a personal AI coach in one app.",
       },
       { name: "theme-color", content: "#ea6b3a" },
     ],

@@ -14,8 +14,17 @@ import { toast } from "sonner";
 
 export const Route = createFileRoute("/_app/diet")({
   component: Diet,
-  head: () => ({ meta: [{ title: "Diet — FitFuel" }] }),
+  head: () => ({ meta: [{ title: "Diet — NAKX FITS" }] }),
 });
+
+const QUICK_FOODS = [
+  { emoji: "🥚", name: "Eggs (2)", kcal: 155, p: 13, c: 1, f: 11 },
+  { emoji: "🍗", name: "Chicken breast (150g)", kcal: 247, p: 46, c: 0, f: 5 },
+  { emoji: "🍚", name: "Cooked rice (1 cup)", kcal: 206, p: 4, c: 45, f: 0 },
+  { emoji: "🥛", name: "Milk (250ml)", kcal: 150, p: 8, c: 12, f: 8 },
+  { emoji: "🍌", name: "Banana", kcal: 105, p: 1, c: 27, f: 0 },
+  { emoji: "🥜", name: "Peanut butter (1 tbsp)", kcal: 94, p: 4, c: 3, f: 8 },
+];
 
 type Food = {
   id: string;
@@ -125,9 +134,60 @@ function Diet() {
       <Section>
         <h2 className="font-semibold mb-2 px-1">Today's meals</h2>
         {(entries?.length ?? 0) === 0 ? (
-          <Card>
-            <p className="text-sm text-muted-foreground">Nothing logged yet.</p>
-          </Card>
+          <div className="space-y-3">
+            <Card className="bg-gradient-to-br from-primary/10 via-card to-accent/10">
+              <div className="flex items-start gap-3">
+                <div className="text-4xl">🍽️</div>
+                <div className="flex-1">
+                  <p className="font-semibold text-sm">Start fueling your day</p>
+                  <p className="text-xs text-muted-foreground mt-0.5">
+                    Snap a meal, search a food, or quick-add from the cards below.
+                  </p>
+                </div>
+              </div>
+            </Card>
+
+            <div>
+              <p className="text-xs font-semibold uppercase tracking-wide text-muted-foreground mb-2 px-1">
+                Quick add
+              </p>
+              <div className="grid grid-cols-2 gap-2">
+                {QUICK_FOODS.map((q) => (
+                  <button
+                    key={q.name}
+                    type="button"
+                    onClick={() =>
+                      addEntry({
+                        name: q.name,
+                        kcal: q.kcal,
+                        protein: q.p,
+                        carbs: q.c,
+                        fat: q.f,
+                      })
+                    }
+                    className="rounded-2xl border bg-card p-3 text-left shadow-sm hover:border-primary hover:bg-primary/5 transition"
+                  >
+                    <div className="text-2xl mb-1">{q.emoji}</div>
+                    <p className="text-sm font-medium leading-tight">{q.name}</p>
+                    <p className="text-xs text-muted-foreground mt-0.5">
+                      {q.kcal} kcal · P{q.p} C{q.c} F{q.f}
+                    </p>
+                  </button>
+                ))}
+              </div>
+            </div>
+
+            <Card>
+              <p className="text-xs font-semibold uppercase tracking-wide text-muted-foreground mb-2">
+                Tips
+              </p>
+              <ul className="text-xs text-muted-foreground space-y-1.5">
+                <li>💧 Hydrate first — drink a glass of water before each meal.</li>
+                <li>🥦 Half your plate veggies, a fist of protein, a thumb of fat.</li>
+                <li>📸 Use the Photo tab to AI-scan a full meal in seconds.</li>
+              </ul>
+            </Card>
+          </div>
         ) : (
           <div className="space-y-2">
             {MEALS.map((m) => {
