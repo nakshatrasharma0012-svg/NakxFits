@@ -4,7 +4,7 @@ import { useServerFn } from "@tanstack/react-start";
 import { useState, useRef } from "react";
 import { useAuth } from "@/lib/auth-context";
 import { supabase } from "@/integrations/supabase/client";
-import { analyzeMealPhoto, estimateMealMacros } from "@/lib/ai.functions";
+import { analyzeMealPhoto, estimateMealText } from "@/lib/ai.functions";
 import { PageHeader, Section, Card } from "@/components/app-shell";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -64,7 +64,7 @@ function Diet() {
       date: today,
       meal_type: meal,
       food_id: e.food_id ?? null,
-      custom_name: e.food_id ? null : e.name,
+      food_name: e.food_id ? null : e.name,
       grams: e.grams ?? null,
       kcal: e.kcal,
       protein_g: e.protein,
@@ -142,7 +142,7 @@ function Diet() {
                     {items.map((e) => (
                       <li key={e.id} className="py-2 flex items-center justify-between text-sm">
                         <div>
-                          <p className="font-medium">{e.custom_name ?? "Food"}</p>
+                          <p className="font-medium">{e.food_name ?? "Food"}</p>
                           <p className="text-xs text-muted-foreground">
                             {Math.round(Number(e.kcal))} kcal · P{Math.round(Number(e.protein_g))}{" "}
                             C{Math.round(Number(e.carbs_g))} F{Math.round(Number(e.fat_g))}
@@ -359,7 +359,7 @@ function PhotoLogger({ onAdd }: { onAdd: (e: any) => void }) {
 }
 
 function DescribeLogger({ onAdd }: { onAdd: (e: any) => void }) {
-  const estimate = useServerFn(estimateMealMacros);
+  const estimate = useServerFn(estimateMealText);
   const [text, setText] = useState("");
   const [loading, setLoading] = useState(false);
   const [r, setR] = useState<any>(null);

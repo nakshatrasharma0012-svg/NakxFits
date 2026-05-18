@@ -4,7 +4,7 @@ import { useServerFn } from "@tanstack/react-start";
 import { useEffect, useRef, useState } from "react";
 import { useAuth } from "@/lib/auth-context";
 import { supabase } from "@/integrations/supabase/client";
-import { chatWithCoach } from "@/lib/ai.functions";
+import { chatCoach } from "@/lib/ai.functions";
 import { PageHeader } from "@/components/app-shell";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -26,7 +26,7 @@ const SUGGESTIONS = [
 function Coach() {
   const { user } = useAuth();
   const qc = useQueryClient();
-  const chat = useServerFn(chatWithCoach);
+  const chat = useServerFn(chatCoach);
   const [input, setInput] = useState("");
   const [sending, setSending] = useState(false);
   const endRef = useRef<HTMLDivElement>(null);
