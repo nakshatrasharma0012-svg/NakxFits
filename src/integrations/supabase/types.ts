@@ -38,6 +38,60 @@ export type Database = {
         }
         Relationships: []
       }
+      custom_workouts: {
+        Row: {
+          created_at: string
+          exercises: Json
+          id: string
+          name: string
+          updated_at: string
+          user_id: string
+        }
+        Insert: {
+          created_at?: string
+          exercises?: Json
+          id?: string
+          name: string
+          updated_at?: string
+          user_id: string
+        }
+        Update: {
+          created_at?: string
+          exercises?: Json
+          id?: string
+          name?: string
+          updated_at?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
+      exercise_demos: {
+        Row: {
+          created_at: string
+          exercise_key: string
+          id: string
+          image_data_url: string | null
+          instructions: string | null
+          updated_at: string
+        }
+        Insert: {
+          created_at?: string
+          exercise_key: string
+          id?: string
+          image_data_url?: string | null
+          instructions?: string | null
+          updated_at?: string
+        }
+        Update: {
+          created_at?: string
+          exercise_key?: string
+          id?: string
+          image_data_url?: string | null
+          instructions?: string | null
+          updated_at?: string
+        }
+        Relationships: []
+      }
       exercises: {
         Row: {
           created_at: string
@@ -292,7 +346,8 @@ export type Database = {
       workout_sets: {
         Row: {
           created_at: string
-          exercise_id: string
+          exercise_id: string | null
+          exercise_name: string | null
           id: string
           reps: number
           session_id: string
@@ -301,7 +356,8 @@ export type Database = {
         }
         Insert: {
           created_at?: string
-          exercise_id: string
+          exercise_id?: string | null
+          exercise_name?: string | null
           id?: string
           reps: number
           session_id: string
@@ -310,7 +366,8 @@ export type Database = {
         }
         Update: {
           created_at?: string
-          exercise_id?: string
+          exercise_id?: string | null
+          exercise_name?: string | null
           id?: string
           reps?: number
           session_id?: string

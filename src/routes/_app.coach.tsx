@@ -13,7 +13,7 @@ import { toast } from "sonner";
 
 export const Route = createFileRoute("/_app/coach")({
   component: Coach,
-  head: () => ({ meta: [{ title: "Coach — FitFuel" }] }),
+  head: () => ({ meta: [{ title: "Coach — NAKX FITS" }] }),
 });
 
 const SUGGESTIONS = [

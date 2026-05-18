@@ -20,7 +20,7 @@ import { toast } from "sonner";
 
 export const Route = createFileRoute("/_app/progress")({
   component: ProgressPage,
-  head: () => ({ meta: [{ title: "Progress — FitFuel" }] }),
+  head: () => ({ meta: [{ title: "Progress — NAKX FITS" }] }),
 });
 
 function ProgressPage() {

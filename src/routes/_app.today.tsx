@@ -12,7 +12,7 @@ import { Button } from "@/components/ui/button";
 
 export const Route = createFileRoute("/_app/today")({
   component: Today,
-  head: () => ({ meta: [{ title: "Today — FitFuel" }] }),
+  head: () => ({ meta: [{ title: "Today — NAKX FITS" }] }),
 });
 
 function Today() {
