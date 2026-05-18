@@ -8,11 +8,12 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { toast } from "sonner";
-import { Dumbbell, Loader2 } from "lucide-react";
+import { Loader2 } from "lucide-react";
+import nakxLogo from "@/assets/nakx-logo.png";
 
 export const Route = createFileRoute("/login")({
   component: LoginPage,
-  head: () => ({ meta: [{ title: "Sign in — FitFuel" }] }),
+  head: () => ({ meta: [{ title: "Sign in — NAKX FITS" }] }),
 });
 
 function LoginPage() {
@@ -42,7 +43,7 @@ function LoginPage() {
           },
         });
         if (error) throw error;
-        toast.success("Account created! Welcome to FitFuel.");
+        toast.success("Welcome to NAKX FITS!");
       } else {
         const { error } = await supabase.auth.signInWithPassword({ email, password });
         if (error) throw error;
@@ -70,12 +71,16 @@ function LoginPage() {
     <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-primary/10 via-background to-accent/10 p-4">
       <div className="w-full max-w-md">
         <div className="flex flex-col items-center mb-8">
-          <div className="h-14 w-14 rounded-2xl bg-primary flex items-center justify-center shadow-lg">
-            <Dumbbell className="h-7 w-7 text-primary-foreground" />
-          </div>
-          <h1 className="mt-4 text-3xl font-bold tracking-tight">FitFuel</h1>
+          <img
+            src={nakxLogo}
+            alt="NAKX FITS"
+            width={160}
+            height={160}
+            className="h-20 w-auto drop-shadow-lg"
+          />
+          <h1 className="mt-3 text-2xl font-extrabold tracking-tight">NAKX FITS</h1>
           <p className="mt-1 text-sm text-muted-foreground">
-            Workouts + nutrition + AI coach
+            Workouts · Nutrition · AI Coach
           </p>
         </div>
 

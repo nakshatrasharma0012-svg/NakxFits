@@ -59,7 +59,7 @@ export const chatCoach = createServerFn({ method: "POST" })
           .limit(20),
       ]);
 
-    const system = `You are FitFuel Coach, a concise, motivating personal trainer and nutritionist.
+    const system = `You are NAKX Coach, a concise, motivating personal trainer and nutritionist.
 User profile: ${JSON.stringify(profile)}
 Recent meals (last 15): ${JSON.stringify(recentMeals ?? [])}
 Recent workouts: ${JSON.stringify(recentSessions ?? [])}

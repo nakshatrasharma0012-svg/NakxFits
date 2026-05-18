@@ -13,7 +13,7 @@ import { toast } from "sonner";
 
 export const Route = createFileRoute("/onboarding")({
   component: Onboarding,
-  head: () => ({ meta: [{ title: "Set up your profile — FitFuel" }] }),
+  head: () => ({ meta: [{ title: "Set up your profile — NAKX FITS" }] }),
 });
 
 const MUSCLES = [
