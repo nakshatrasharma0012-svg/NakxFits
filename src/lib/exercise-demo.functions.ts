@@ -106,18 +106,18 @@ export const getExerciseDemo = createServerFn({ method: "POST" })
     // Upsert into cache (uses authenticated client; RLS allows insert via service role only,
     // so use a direct insert via the auth client — if blocked we still return to the user)
     if (imageDataUrl) {
-      await supabase
-        .from("exercise_demos")
-        .upsert(
+      try {
+        await supabaseAdmin.from("exercise_demos").upsert(
           {
             exercise_key: key,
             image_data_url: imageDataUrl,
             instructions,
           },
           { onConflict: "exercise_key" },
-        )
-        .then(() => {})
-        .catch(() => {});
+        );
+      } catch (e) {
+        console.error("demo cache write failed", e);
+      }
     }
 
     return { image: imageDataUrl, instructions, cached: false };
