@@ -326,7 +326,7 @@ function PillRadio({
 }) {
   return (
     <label
-      className={`flex items-center gap-2 rounded-xl border-2 border-border bg-card p-3 text-sm cursor-pointer has-[:checked]:border-primary has-[:checked]:bg-primary/10 ${
+      className={`flex items-center gap-2 rounded-xl border-2 border-border bg-card p-3 text-sm cursor-pointer transition has-[[data-state=checked]]:border-primary has-[[data-state=checked]]:bg-primary/10 ${
         align === "center" ? "justify-center text-center" : ""
       }`}
     >
