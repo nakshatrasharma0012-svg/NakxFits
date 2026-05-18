@@ -92,9 +92,11 @@ function Onboarding() {
           body_type: s.body_type,
           activity_level: s.activity_level,
           goal: s.goal,
-          target_muscles: s.target_muscles as State["target_muscles"] & string[],
+          target_muscles: s.target_muscles as unknown as (
+            | "chest" | "back" | "legs" | "shoulders" | "arms" | "core" | "full_body" | "cardio"
+          )[],
           preferred_mode: s.preferred_mode,
-        } as Parameters<typeof save>[0]["data"],
+        },
       });
       toast.success("Profile saved!");
       navigate({ to: "/today" });
