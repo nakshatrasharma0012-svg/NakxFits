@@ -318,7 +318,7 @@ function PhotoLogger({ onAdd }: { onAdd: (e: any) => void }) {
       </Button>
       {result && total && (
         <Card className="mt-3">
-          <p className="font-medium">{result.name}</p>
+          <p className="font-medium">{result.meal_name}</p>
           <ul className="mt-1 space-y-0.5 text-xs text-muted-foreground">
             {result.items.map((i, idx) => (
               <li key={idx}>
@@ -327,18 +327,18 @@ function PhotoLogger({ onAdd }: { onAdd: (e: any) => void }) {
             ))}
           </ul>
           <p className="mt-2 text-sm">
-            Total: <b>{Math.round(total.kcal)}</b> kcal · P{Math.round(total.protein)} C
-            {Math.round(total.carbs)} F{Math.round(total.fat)}
+            Total: <b>{Math.round(total.kcal)}</b> kcal · P{Math.round(total.protein_g)} C
+            {Math.round(total.carbs_g)} F{Math.round(total.fat_g)}
           </p>
           <Button
             className="mt-2 w-full"
             onClick={() => {
               onAdd({
-                name: result.name,
+                name: result.meal_name,
                 kcal: total.kcal,
-                protein: total.protein,
-                carbs: total.carbs,
-                fat: total.fat,
+                protein: total.protein_g,
+                carbs: total.carbs_g,
+                fat: total.fat_g,
               });
               setResult(null);
             }}
