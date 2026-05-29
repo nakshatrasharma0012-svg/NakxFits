@@ -56,10 +56,6 @@ function LoginPage() {
     }
   };
 
-  const onGoogle = async () => {
-    setLoading(true);
-    const result = await lovable.auth.signInWithOAuth("google", {
-      redirect_uri: window.location.origin,
   const onOAuth = async (provider: "google" | "apple") => {
     setLoading(true);
     const result = await lovable.auth.signInWithOAuth(provider, {
@@ -70,6 +66,10 @@ function LoginPage() {
       setLoading(false);
     }
   };
+
+  return (
+    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-primary/10 via-background to-accent/10 p-4">
+      <div className="w-full max-w-md">
         <div className="flex flex-col items-center mb-8">
           <img
             src={nakxLogo}
@@ -166,6 +166,7 @@ function LoginPage() {
             <div className="relative flex justify-center text-xs uppercase">
               <span className="bg-card px-2 text-muted-foreground">or</span>
             </div>
+          </div>
           <div className="space-y-2">
             <Button
               variant="outline"
