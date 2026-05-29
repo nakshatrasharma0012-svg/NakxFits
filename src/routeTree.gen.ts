@@ -16,6 +16,7 @@ import { Route as IndexRouteImport } from './routes/index'
 import { Route as AppWorkoutsRouteImport } from './routes/_app.workouts'
 import { Route as AppTodayRouteImport } from './routes/_app.today'
 import { Route as AppProgressRouteImport } from './routes/_app.progress'
+import { Route as AppProfileRouteImport } from './routes/_app.profile'
 import { Route as AppDietRouteImport } from './routes/_app.diet'
 import { Route as AppCoachRouteImport } from './routes/_app.coach'
 
@@ -53,6 +54,11 @@ const AppProgressRoute = AppProgressRouteImport.update({
   path: '/progress',
   getParentRoute: () => AppRoute,
 } as any)
+const AppProfileRoute = AppProfileRouteImport.update({
+  id: '/profile',
+  path: '/profile',
+  getParentRoute: () => AppRoute,
+} as any)
 const AppDietRoute = AppDietRouteImport.update({
   id: '/diet',
   path: '/diet',
@@ -70,6 +76,7 @@ export interface FileRoutesByFullPath {
   '/onboarding': typeof OnboardingRoute
   '/coach': typeof AppCoachRoute
   '/diet': typeof AppDietRoute
+  '/profile': typeof AppProfileRoute
   '/progress': typeof AppProgressRoute
   '/today': typeof AppTodayRoute
   '/workouts': typeof AppWorkoutsRoute
@@ -80,6 +87,7 @@ export interface FileRoutesByTo {
   '/onboarding': typeof OnboardingRoute
   '/coach': typeof AppCoachRoute
   '/diet': typeof AppDietRoute
+  '/profile': typeof AppProfileRoute
   '/progress': typeof AppProgressRoute
   '/today': typeof AppTodayRoute
   '/workouts': typeof AppWorkoutsRoute
@@ -92,6 +100,7 @@ export interface FileRoutesById {
   '/onboarding': typeof OnboardingRoute
   '/_app/coach': typeof AppCoachRoute
   '/_app/diet': typeof AppDietRoute
+  '/_app/profile': typeof AppProfileRoute
   '/_app/progress': typeof AppProgressRoute
   '/_app/today': typeof AppTodayRoute
   '/_app/workouts': typeof AppWorkoutsRoute
@@ -104,6 +113,7 @@ export interface FileRouteTypes {
     | '/onboarding'
     | '/coach'
     | '/diet'
+    | '/profile'
     | '/progress'
     | '/today'
     | '/workouts'
@@ -114,6 +124,7 @@ export interface FileRouteTypes {
     | '/onboarding'
     | '/coach'
     | '/diet'
+    | '/profile'
     | '/progress'
     | '/today'
     | '/workouts'
@@ -125,6 +136,7 @@ export interface FileRouteTypes {
     | '/onboarding'
     | '/_app/coach'
     | '/_app/diet'
+    | '/_app/profile'
     | '/_app/progress'
     | '/_app/today'
     | '/_app/workouts'
@@ -188,6 +200,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AppProgressRouteImport
       parentRoute: typeof AppRoute
     }
+    '/_app/profile': {
+      id: '/_app/profile'
+      path: '/profile'
+      fullPath: '/profile'
+      preLoaderRoute: typeof AppProfileRouteImport
+      parentRoute: typeof AppRoute
+    }
     '/_app/diet': {
       id: '/_app/diet'
       path: '/diet'
@@ -208,6 +227,7 @@ declare module '@tanstack/react-router' {
 interface AppRouteChildren {
   AppCoachRoute: typeof AppCoachRoute
   AppDietRoute: typeof AppDietRoute
+  AppProfileRoute: typeof AppProfileRoute
   AppProgressRoute: typeof AppProgressRoute
   AppTodayRoute: typeof AppTodayRoute
   AppWorkoutsRoute: typeof AppWorkoutsRoute
@@ -216,6 +236,7 @@ interface AppRouteChildren {
 const AppRouteChildren: AppRouteChildren = {
   AppCoachRoute: AppCoachRoute,
   AppDietRoute: AppDietRoute,
+  AppProfileRoute: AppProfileRoute,
   AppProgressRoute: AppProgressRoute,
   AppTodayRoute: AppTodayRoute,
   AppWorkoutsRoute: AppWorkoutsRoute,
