@@ -15,6 +15,8 @@ import { ThemeBootstrap } from "@/lib/theme";
 import { Toaster } from "@/components/ui/sonner";
 import { supabase } from "@/integrations/supabase/client";
 
+const SITE_URL = "https://build-a-dream-08.lovable.app";
+
 function NotFoundComponent() {
   return (
     <div className="flex min-h-screen items-center justify-center bg-background px-4">
@@ -76,24 +78,40 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
         content:
           "width=device-width, initial-scale=1, maximum-scale=1, viewport-fit=cover",
       },
-      { title: "FitFuel — Workouts & Nutrition" },
+      { title: "NAKX FITS — AI Fitness & Nutrition Coach" },
       {
         name: "description",
         content:
-          "Track gym & home workouts, log meals with AI photo scan, and get a personal AI coach — all in one app.",
+          "NAKX FITS is an all-in-one fitness app: track gym & home workouts, log meals with AI photo scan, and get a personal AI coach for training and nutrition.",
       },
       { name: "theme-color", content: "#ea6b3a" },
-      { property: "og:title", content: "FitFuel — Workouts & Nutrition" },
-      { name: "twitter:title", content: "FitFuel — Workouts & Nutrition" },
-      { name: "description", content: "Build It Happy is a web application that enables users to collect customer payments and manage workout plans." },
-      { property: "og:description", content: "Build It Happy is a web application that enables users to collect customer payments and manage workout plans." },
-      { name: "twitter:description", content: "Build It Happy is a web application that enables users to collect customer payments and manage workout plans." },
-      { property: "og:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/f1b08517-de2b-4d14-a551-e838ccf3d870/id-preview-acedac4d--0e376684-6715-45fd-9d7a-9e9b2837ac35.lovable.app-1779104796088.png" },
-      { name: "twitter:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/f1b08517-de2b-4d14-a551-e838ccf3d870/id-preview-acedac4d--0e376684-6715-45fd-9d7a-9e9b2837ac35.lovable.app-1779104796088.png" },
-      { name: "twitter:card", content: "summary_large_image" },
+      { property: "og:site_name", content: "NAKX FITS" },
       { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
     ],
     links: [{ rel: "stylesheet", href: appCss }],
+    scripts: [
+      {
+        type: "application/ld+json",
+        children: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "WebSite",
+          name: "NAKX FITS",
+          url: SITE_URL,
+          description:
+            "AI-powered fitness and nutrition coach with workout logging, macro tracking, and photo meal scanning.",
+        }),
+      },
+      {
+        type: "application/ld+json",
+        children: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "Organization",
+          name: "NAKX FITS",
+          url: SITE_URL,
+        }),
+      },
+    ],
   }),
   shellComponent: RootShell,
   component: RootComponent,
