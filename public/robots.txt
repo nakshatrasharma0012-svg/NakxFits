@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://build-a-dream-08.lovable.app/sitemap.xml

@@ -13,7 +13,27 @@ import nakxLogo from "@/assets/nakx-logo.png";
 
 export const Route = createFileRoute("/login")({
   component: LoginPage,
-  head: () => ({ meta: [{ title: "Sign in — NAKX FITS" }] }),
+  head: () => ({
+    meta: [
+      { title: "Sign in — NAKX FITS" },
+      {
+        name: "description",
+        content:
+          "Sign in or create your NAKX FITS account with email, Google, or Apple to start tracking workouts, meals, and AI coaching.",
+      },
+      { property: "og:title", content: "Sign in to NAKX FITS" },
+      {
+        property: "og:description",
+        content:
+          "Access your personalized workouts, meal tracking, and AI fitness coach.",
+      },
+      { property: "og:url", content: "https://build-a-dream-08.lovable.app/login" },
+      { property: "og:type", content: "website" },
+    ],
+    links: [
+      { rel: "canonical", href: "https://build-a-dream-08.lovable.app/login" },
+    ],
+  }),
 });
 
 function LoginPage() {
@@ -78,7 +98,9 @@ function LoginPage() {
             height={160}
             className="h-20 w-auto drop-shadow-lg"
           />
-          <h1 className="mt-3 text-2xl font-extrabold tracking-tight">NAKX FITS</h1>
+          <h1 className="mt-3 text-2xl font-extrabold tracking-tight">
+            NAKX FITS — Your AI Fitness &amp; Nutrition Coach
+          </h1>
           <p className="mt-1 text-sm text-muted-foreground">
             Workouts · Nutrition · AI Coach
           </p>

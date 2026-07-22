@@ -20,7 +20,26 @@ import { toast } from "sonner";
 
 export const Route = createFileRoute("/_app/progress")({
   component: ProgressPage,
-  head: () => ({ meta: [{ title: "Progress — NAKX FITS" }] }),
+  head: () => ({
+    meta: [
+      { title: "Progress — NAKX FITS" },
+      {
+        name: "description",
+        content:
+          "Visualize your 30-day weight trend, calorie intake, and training consistency to stay on track with your goals.",
+      },
+      { property: "og:title", content: "Progress — NAKX FITS" },
+      {
+        property: "og:description",
+        content: "30-day charts for weight, calories, and workout consistency.",
+      },
+      { property: "og:url", content: "https://build-a-dream-08.lovable.app/progress" },
+      { property: "og:type", content: "website" },
+    ],
+    links: [
+      { rel: "canonical", href: "https://build-a-dream-08.lovable.app/progress" },
+    ],
+  }),
 });
 
 function ProgressPage() {

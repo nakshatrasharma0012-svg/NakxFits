@@ -7,6 +7,27 @@ import { Loader2 } from "lucide-react";
 
 export const Route = createFileRoute("/")({
   component: IndexRedirect,
+  head: () => ({
+    meta: [
+      { title: "NAKX FITS — AI Fitness & Nutrition Coach" },
+      {
+        name: "description",
+        content:
+          "NAKX FITS is your all-in-one fitness app: gym and home workouts, AI photo meal tracking, and a personal AI coach.",
+      },
+      { property: "og:title", content: "NAKX FITS — AI Fitness & Nutrition Coach" },
+      {
+        property: "og:description",
+        content:
+          "Track workouts, scan meals with AI, and get personalized coaching in one app.",
+      },
+      { property: "og:url", content: "https://build-a-dream-08.lovable.app/" },
+      { property: "og:type", content: "website" },
+    ],
+    links: [
+      { rel: "canonical", href: "https://build-a-dream-08.lovable.app/" },
+    ],
+  }),
 });
 
 function IndexRedirect() {

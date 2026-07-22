@@ -12,7 +12,26 @@ import { Button } from "@/components/ui/button";
 
 export const Route = createFileRoute("/_app/today")({
   component: Today,
-  head: () => ({ meta: [{ title: "Today — NAKX FITS" }] }),
+  head: () => ({
+    meta: [
+      { title: "Your Daily Dashboard — NAKX FITS" },
+      {
+        name: "description",
+        content:
+          "See today's calories, macros, and workout progress at a glance and log meals or training in one tap.",
+      },
+      { property: "og:title", content: "Your Daily Dashboard — NAKX FITS" },
+      {
+        property: "og:description",
+        content: "Track today's calories, macros, and training progress in one place.",
+      },
+      { property: "og:url", content: "https://build-a-dream-08.lovable.app/today" },
+      { property: "og:type", content: "website" },
+    ],
+    links: [
+      { rel: "canonical", href: "https://build-a-dream-08.lovable.app/today" },
+    ],
+  }),
 });
 
 function Today() {
@@ -69,12 +88,12 @@ function Today() {
   return (
     <div>
       <PageHeader
-        title={`Hi ${profile?.name ?? "there"} 👋`}
-        subtitle={new Date().toLocaleDateString(undefined, {
+        title="Your Daily Dashboard"
+        subtitle={`Hi ${profile?.name ?? "there"} · ${new Date().toLocaleDateString(undefined, {
           weekday: "long",
           month: "short",
           day: "numeric",
-        })}
+        })}`}
       />
 
       <Section>

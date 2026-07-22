@@ -1,0 +1,10 @@
+# NAKX FITS
+
+> AI-powered fitness and nutrition coach — track gym & home workouts, log meals with photo scanning, and chat with a personal AI coach.
+
+NAKX FITS helps people plan workouts (Gym or Home mode), log meals with AI photo scan or text description, track macros against personalized daily targets, and get form cues and plan advice from an AI coach.
+
+## Pages
+
+- [Home](/): App entry — redirects to sign-in or your daily dashboard.
+- [Sign in](/login): Create an account or sign in with email, Google, or Apple.

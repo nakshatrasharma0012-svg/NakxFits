@@ -33,7 +33,26 @@ import { ExerciseDemoModal } from "@/components/exercise-demo-modal";
 
 export const Route = createFileRoute("/_app/workouts")({
   component: Workouts,
-  head: () => ({ meta: [{ title: "Workouts — NAKX FITS" }] }),
+  head: () => ({
+    meta: [
+      { title: "Workouts — NAKX FITS" },
+      {
+        name: "description",
+        content:
+          "Follow gym or home workout plans, log sets and reps, and watch AI-generated form demos for every exercise.",
+      },
+      { property: "og:title", content: "Workouts — NAKX FITS" },
+      {
+        property: "og:description",
+        content: "Gym and home workout plans with set logging and AI form demos.",
+      },
+      { property: "og:url", content: "https://build-a-dream-08.lovable.app/workouts" },
+      { property: "og:type", content: "website" },
+    ],
+    links: [
+      { rel: "canonical", href: "https://build-a-dream-08.lovable.app/workouts" },
+    ],
+  }),
 });
 
 type Exercise = {

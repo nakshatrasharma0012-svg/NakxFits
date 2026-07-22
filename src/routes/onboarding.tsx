@@ -13,7 +13,26 @@ import { toast } from "sonner";
 
 export const Route = createFileRoute("/onboarding")({
   component: Onboarding,
-  head: () => ({ meta: [{ title: "Set up your profile — NAKX FITS" }] }),
+  head: () => ({
+    meta: [
+      { title: "Set up your profile — NAKX FITS" },
+      {
+        name: "description",
+        content:
+          "Tell NAKX FITS about your body, goals, and training style so we can build personalized calorie targets and workout plans.",
+      },
+      { property: "og:title", content: "Set up your NAKX FITS profile" },
+      {
+        property: "og:description",
+        content: "Personalize your workouts and daily nutrition targets in a few quick steps.",
+      },
+      { property: "og:url", content: "https://build-a-dream-08.lovable.app/onboarding" },
+      { property: "og:type", content: "website" },
+    ],
+    links: [
+      { rel: "canonical", href: "https://build-a-dream-08.lovable.app/onboarding" },
+    ],
+  }),
 });
 
 const MUSCLES = [
@@ -127,7 +146,7 @@ function Onboarding() {
 
         {step === 0 && (
           <section className="space-y-5">
-            <Header title="Welcome 👋" subtitle="Let's get to know you" />
+            <Header title="Create Your Fitness Profile" subtitle="Let's get to know you" />
             <div>
               <Label htmlFor="name">Your name</Label>
               <Input
