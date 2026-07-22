@@ -14,7 +14,26 @@ import { toast } from "sonner";
 
 export const Route = createFileRoute("/_app/diet")({
   component: Diet,
-  head: () => ({ meta: [{ title: "Diet — NAKX FITS" }] }),
+  head: () => ({
+    meta: [
+      { title: "Diet & Meal Tracker — NAKX FITS" },
+      {
+        name: "description",
+        content:
+          "Log meals with AI photo scanning, text description, or a searchable food database, and see calories and macros instantly.",
+      },
+      { property: "og:title", content: "Diet & Meal Tracker — NAKX FITS" },
+      {
+        property: "og:description",
+        content: "Snap a photo, describe a meal, or search foods to log calories and macros in seconds.",
+      },
+      { property: "og:url", content: "https://build-a-dream-08.lovable.app/diet" },
+      { property: "og:type", content: "website" },
+    ],
+    links: [
+      { rel: "canonical", href: "https://build-a-dream-08.lovable.app/diet" },
+    ],
+  }),
 });
 
 const QUICK_FOODS = [
@@ -210,6 +229,7 @@ function Diet() {
                         </div>
                         <button
                           onClick={() => delEntry(e.id)}
+                          aria-label="Delete entry"
                           className="text-muted-foreground hover:text-destructive"
                         >
                           <Trash2 className="h-4 w-4" />

@@ -13,7 +13,26 @@ import { toast } from "sonner";
 
 export const Route = createFileRoute("/_app/coach")({
   component: Coach,
-  head: () => ({ meta: [{ title: "Coach — NAKX FITS" }] }),
+  head: () => ({
+    meta: [
+      { title: "AI Coach — NAKX FITS" },
+      {
+        name: "description",
+        content:
+          "Chat with the NAKX FITS AI coach for personalized workout plans, meal ideas, and form tips based on your goals.",
+      },
+      { property: "og:title", content: "AI Coach — NAKX FITS" },
+      {
+        property: "og:description",
+        content: "Get personalized workout, nutrition, and form advice from your AI coach.",
+      },
+      { property: "og:url", content: "https://build-a-dream-08.lovable.app/coach" },
+      { property: "og:type", content: "website" },
+    ],
+    links: [
+      { rel: "canonical", href: "https://build-a-dream-08.lovable.app/coach" },
+    ],
+  }),
 });
 
 const SUGGESTIONS = [
@@ -131,7 +150,12 @@ function Coach() {
             onChange={(e) => setInput(e.target.value)}
             disabled={sending}
           />
-          <Button type="submit" disabled={sending || !input.trim()} size="icon">
+          <Button
+            type="submit"
+            disabled={sending || !input.trim()}
+            size="icon"
+            aria-label="Send message"
+          >
             <Send className="h-4 w-4" />
           </Button>
         </form>
