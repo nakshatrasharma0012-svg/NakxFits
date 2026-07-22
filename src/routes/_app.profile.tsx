@@ -16,7 +16,26 @@ import { LogOut, Sun, Moon, Monitor, Loader2 } from "lucide-react";
 
 export const Route = createFileRoute("/_app/profile")({
   component: ProfilePage,
-  head: () => ({ meta: [{ title: "Profile — NAKX FITS" }] }),
+  head: () => ({
+    meta: [
+      { title: "Profile — NAKX FITS" },
+      {
+        name: "description",
+        content:
+          "Edit your name, body metrics, and theme preferences, or sign out of your NAKX FITS account.",
+      },
+      { property: "og:title", content: "Profile — NAKX FITS" },
+      {
+        property: "og:description",
+        content: "Manage your account, body metrics, and appearance preferences.",
+      },
+      { property: "og:url", content: "https://build-a-dream-08.lovable.app/profile" },
+      { property: "og:type", content: "website" },
+    ],
+    links: [
+      { rel: "canonical", href: "https://build-a-dream-08.lovable.app/profile" },
+    ],
+  }),
 });
 
 function ProfilePage() {
